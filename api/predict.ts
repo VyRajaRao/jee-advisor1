@@ -1,7 +1,8 @@
+import { VercelRequest, VercelResponse } from '@vercel/node';
 import { storage } from "../server/storage";
 import { rankPredictionSchema } from "../shared/schema";
 
-export default async function handler(req, res) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === "POST") {
     try {
       const prediction = rankPredictionSchema.parse(req.body);

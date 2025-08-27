@@ -1,6 +1,7 @@
+import { VercelRequest, VercelResponse } from '@vercel/node';
 import { storage } from "../server/storage";
 
-export default async function handler(req, res) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === "GET") {
     try {
       const year = req.query.year ? parseInt(req.query.year) : 2024;
