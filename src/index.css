@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Neon/Xenon Theme Design System - Dark mode with neon highlights */
+
+@layer base {
+  :root {
+    /* Neon Light Mode Colors */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 266 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 193 100% 50%;
+    --accent-foreground: 240 10% 3.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 266 100% 50%;
+    --radius: 0.75rem;
+    
+    /* Neon specific colors */
+    --neon-blue: 193 100% 50%;
+    --neon-purple: 266 100% 50%;
+    --neon-pink: 330 100% 70%;
+    --neon-green: 120 100% 50%;
+    --glow-intensity: 0.8;
+    
+    /* Gradients */
+    --gradient-neon: linear-gradient(135deg, hsl(var(--neon-blue)), hsl(var(--neon-purple)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(240 6% 10%) 100%);
+    
+    /* Shadows */
+    --shadow-neon-blue: 0 0 20px hsl(var(--neon-blue) / 0.5), 0 0 40px hsl(var(--neon-blue) / 0.3);
+    --shadow-neon-purple: 0 0 20px hsl(var(--neon-purple) / 0.5), 0 0 40px hsl(var(--neon-purple) / 0.3);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.5);
+    
+    /* Animations */
+    --transition-glow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Enhanced dark mode for better neon contrast */
+    --background: 240 10% 2%;
+    --foreground: 0 0% 100%;
+    --card: 240 8% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 8% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 266 100% 60%;
+    --primary-foreground: 240 10% 2%;
+    --secondary: 240 6% 8%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 6% 8%;
+    --muted-foreground: 240 5% 70%;
+    --accent: 193 100% 60%;
+    --accent-foreground: 240 10% 2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 6% 12%;
+    --input: 240 6% 12%;
+    --ring: 266 100% 60%;
+    
+    /* Enhanced neon colors for dark mode */
+    --neon-blue: 193 100% 60%;
+    --neon-purple: 266 100% 70%;
+    --neon-pink: 330 100% 80%;
+    --neon-green: 120 100% 60%;
+    --glow-intensity: 1;
+    
+    /* Enhanced shadows for dark mode */
+    --shadow-neon-blue: 0 0 30px hsl(var(--neon-blue) / 0.7), 0 0 60px hsl(var(--neon-blue) / 0.4);
+    --shadow-neon-purple: 0 0 30px hsl(var(--neon-purple) / 0.7), 0 0 60px hsl(var(--neon-purple) / 0.4);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.8);
+  }
+}
+
+@layer components {
+  /* Neon glow effects */
+  .neon-glow {
+    box-shadow: var(--shadow-neon-blue);
+    transition: var(--transition-glow);
+  }
+  
+  .neon-glow:hover {
+    box-shadow: 0 0 40px hsl(var(--neon-blue) / 0.8), 0 0 80px hsl(var(--neon-blue) / 0.5);
+    transform: translateY(-2px);
+  }
+  
+  .neon-text {
+    color: hsl(var(--neon-blue));
+    text-shadow: 0 0 10px hsl(var(--neon-blue) / 0.8);
+  }
+  
+  .neon-text-purple {
+    color: hsl(var(--neon-purple));
+    text-shadow: 0 0 10px hsl(var(--neon-purple) / 0.8);
+  }
+  
+  .neon-border {
+    border: 1px solid hsl(var(--neon-blue) / 0.5);
+    box-shadow: inset 0 0 10px hsl(var(--neon-blue) / 0.2);
+  }
+  
+  .glass-card {
+    background: linear-gradient(145deg, 
+      hsl(var(--card) / 0.9) 0%, 
+      hsl(240 6% 10% / 0.7) 100%
+    );
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.2);
+    box-shadow: var(--shadow-card);
+  }
+  
+  .animated-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--neon-blue)) 0%,
+      hsl(var(--neon-purple)) 50%,
+      hsl(var(--neon-pink)) 100%
+    );
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Keyframes */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-glow {
+  from {
+    box-shadow: 0 0 20px hsl(var(--neon-blue) / 0.4);
+  }
+  to {
+    box-shadow: 0 0 40px hsl(var(--neon-blue) / 0.8), 0 0 80px hsl(var(--neon-blue) / 0.4);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { 
+    text-shadow: 0 0 5px hsl(var(--neon-blue) / 0.5);
+  }
+  50% { 
+    text-shadow: 
+      0 0 10px hsl(var(--neon-blue)),
+      0 0 20px hsl(var(--neon-blue) / 0.8),
+      0 0 30px hsl(var(--neon-blue) / 0.6);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
