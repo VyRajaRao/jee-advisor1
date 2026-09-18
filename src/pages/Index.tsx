@@ -1,183 +1,140 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Search, TrendingUp, Target, Info, Sparkles, GraduationCap } from "lucide-react";
+import { ArrowUpRight, GraduationCap, Search, Target, TrendingUp } from "lucide-react";
+
+const pathways = [
+  {
+    href: "/explore",
+    label: "01 / DISCOVER",
+    title: "Explore colleges",
+    description: "Search the field by rank, course, location, and institution type.",
+    icon: Search,
+    accent: "text-neon-blue",
+  },
+  {
+    href: "/predictor",
+    label: "02 / TEST",
+    title: "Predict your range",
+    description: "Turn your rank and preferences into a clear set of likely outcomes.",
+    icon: Target,
+    accent: "text-neon-purple",
+  },
+  {
+    href: "/trends",
+    label: "03 / READ",
+    title: "Follow the movement",
+    description: "See how cutoffs shift over time before you make your shortlist.",
+    icon: TrendingUp,
+    accent: "text-neon-pink",
+  },
+];
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 animated-gradient opacity-10 -z-10" />
-      
-      {/* Navigation Header */}
-      <nav className="fixed top-0 w-full z-50 glass-card border-b border-neon-blue/20">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <GraduationCap className="h-8 w-8 text-neon-blue" />
-            <span className="text-2xl font-bold neon-text">RankAdvisor</span>
+    <div className="min-h-screen bg-background text-foreground">
+      <nav className="fixed top-0 z-50 w-full border-b border-border/80 bg-background/95">
+        <div className="container mx-auto flex items-center justify-between px-4 py-4 sm:px-8">
+          <Link to="/" className="flex items-center gap-3 text-foreground" aria-label="RankAdvisor home">
+            <span className="flex h-9 w-9 items-center justify-center border border-neon-purple/70 text-neon-purple">
+              <GraduationCap className="h-5 w-5" />
+            </span>
+            <span className="font-display text-lg tracking-[0.14em]">RANKADVISOR</span>
+          </Link>
+          <div className="hidden items-center gap-8 text-xs uppercase tracking-[0.18em] text-muted-foreground md:flex">
+            <Link to="/explore" className="transition-colors hover:text-neon-purple">Explore</Link>
+            <Link to="/trends" className="transition-colors hover:text-neon-purple">Trends</Link>
+            <Link to="/predictor" className="transition-colors hover:text-neon-purple">Predictor</Link>
+            <Link to="/about" className="transition-colors hover:text-neon-purple">About</Link>
           </div>
-          <div className="hidden md:flex space-x-6">
-            <Link to="/" className="text-foreground hover:text-neon-blue transition-colors">Home</Link>
-            <Link to="/explore" className="text-foreground hover:text-neon-blue transition-colors">Explore</Link>
-            <Link to="/trends" className="text-foreground hover:text-neon-blue transition-colors">Trends</Link>
-            <Link to="/predictor" className="text-foreground hover:text-neon-blue transition-colors">Predictor</Link>
-          </div>
+          <Link to="/explore" className="hidden border border-neon-purple/70 px-4 py-2 text-xs uppercase tracking-[0.16em] text-neon-purple transition-colors hover:bg-neon-purple hover:text-primary-foreground sm:block">
+            Begin search
+          </Link>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto text-center">
-          <div className="animate-slide-up">
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-glow-pulse">
-              <span className="neon-text-purple">Rank</span>
-              <span className="neon-text">Advisor</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in">
-              Discover your perfect college match with AI-powered rank prediction, 
-              comprehensive trend analysis, and detailed college exploration
+      <main>
+        <section className="relative overflow-hidden border-b border-border/80 px-4 pb-20 pt-36 sm:px-8 sm:pb-28 sm:pt-48">
+          <div className="absolute right-[-8rem] top-24 h-96 w-96 rounded-full border border-neon-purple/20" aria-hidden="true" />
+          <div className="absolute right-[-3rem] top-48 h-64 w-64 rounded-full border border-neon-blue/20" aria-hidden="true" />
+          <div className="container relative mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+            <div className="max-w-4xl animate-slide-up">
+              <p className="mb-6 text-xs uppercase tracking-[0.24em] text-neon-blue">JEE decision intelligence / 2024 edition</p>
+              <h1 className="max-w-4xl text-6xl leading-[0.86] text-foreground sm:text-8xl lg:text-[9rem]">
+                Find the place<br />
+                where your <span className="text-neon-purple">rank</span> belongs.
+              </h1>
+              <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+                A sharper way to read college admissions. Compare the signal, understand the trend, and make a choice you can stand behind.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-5">
+                <Link to="/explore" className="inline-flex items-center gap-3 bg-neon-purple px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5">
+                  Explore the database <ArrowUpRight className="h-4 w-4" />
+                </Link>
+                <Link to="/about" className="text-sm text-muted-foreground underline decoration-border underline-offset-8 transition-colors hover:text-foreground">
+                  How the signal works
+                </Link>
+              </div>
+            </div>
+
+            <aside className="border-l border-neon-blue/60 pl-6 sm:pl-8 lg:mb-2" aria-label="RankAdvisor snapshot">
+              <p className="text-xs uppercase tracking-[0.2em] text-neon-blue">The dataset</p>
+              <div className="mt-8 space-y-7">
+                <div>
+                  <p className="font-display text-5xl text-neon-purple">150<span className="text-3xl">+</span></p>
+                  <p className="mt-1 text-sm text-muted-foreground">institutions indexed</p>
+                </div>
+                <div className="border-t border-border pt-5">
+                  <p className="font-display text-5xl text-neon-purple">08</p>
+                  <p className="mt-1 text-sm text-muted-foreground">years of cutoff history</p>
+                </div>
+                <div className="border-t border-border pt-5">
+                  <p className="font-display text-5xl text-neon-purple">95<span className="text-3xl">%</span></p>
+                  <p className="mt-1 text-sm text-muted-foreground">prediction accuracy</p>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section className="px-4 py-20 sm:px-8 sm:py-28">
+          <div className="container mx-auto max-w-7xl">
+            <div className="mb-10 flex items-end justify-between gap-6 border-b border-border pb-5">
+              <div>
+                <p className="text-xs uppercase tracking-[0.24em] text-neon-blue">Choose your next move</p>
+                <h2 className="mt-3 text-4xl text-foreground sm:text-5xl">Read the field clearly.</h2>
+              </div>
+              <span className="hidden text-xs uppercase tracking-[0.16em] text-muted-foreground sm:block">01—03</span>
+            </div>
+
+            <div className="divide-y divide-border border-b border-border">
+              {pathways.map(({ href, label, title, description, icon: Icon, accent }) => (
+                <Link key={href} to={href} className="group grid gap-5 py-7 transition-colors hover:bg-card/60 sm:grid-cols-[0.55fr_1fr_1fr_auto] sm:items-center sm:px-5">
+                  <span className={`text-xs uppercase tracking-[0.2em] ${accent}`}>{label}</span>
+                  <span className="flex items-center gap-3 text-2xl text-foreground sm:text-3xl">
+                    <Icon className={`h-5 w-5 ${accent}`} />
+                    {title}
+                  </span>
+                  <span className="max-w-sm text-sm leading-relaxed text-muted-foreground">{description}</span>
+                  <ArrowUpRight className={`h-5 w-5 ${accent} transition-transform group-hover:-translate-y-1 group-hover:translate-x-1`} />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-border bg-card/60 px-4 py-16 sm:px-8 sm:py-20">
+          <div className="container mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_2fr] lg:items-center">
+            <p className="text-xs uppercase tracking-[0.24em] text-neon-blue">A calmer decision</p>
+            <p className="max-w-4xl text-3xl leading-tight text-foreground sm:text-5xl">
+              The best shortlist is not the longest one. It is the one built from evidence.
             </p>
           </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
-            <Button size="lg" className="neon-glow group relative overflow-hidden" asChild>
-              <Link to="/explore">
-                <span className="relative z-10">Get Started</span>
-                <Sparkles className="ml-2 h-5 w-5 animate-float" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg" className="neon-border hover:neon-glow" asChild>
-              <Link to="/about">
-                Learn More
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      {/* Feature Cards Grid */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* College Explorer Card */}
-            <Link to="/explore" className="group">
-              <Card className="glass-card border-neon-blue/20 hover:neon-glow transition-all duration-300 group-hover:scale-105 h-full">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-4 rounded-full bg-neon-blue/10 border border-neon-blue/30">
-                    <Search className="h-8 w-8 text-neon-blue animate-pulse" />
-                  </div>
-                  <CardTitle className="text-xl neon-text">Explore Colleges</CardTitle>
-                  <CardDescription className="text-muted-foreground">
-                    Search and filter thousands of colleges by name, rank, location, and courses
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Advanced search filters</li>
-                    <li>• Real-time results</li>
-                    <li>• Detailed college profiles</li>
-                    <li>• Compare institutions</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </Link>
-
-            {/* Rank Predictor Card */}
-            <Link to="/predictor" className="group">
-              <Card className="glass-card border-neon-purple/20 hover:shadow-neon-purple hover:border-neon-purple/40 transition-all duration-300 group-hover:scale-105 h-full">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-4 rounded-full bg-neon-purple/10 border border-neon-purple/30">
-                    <Target className="h-8 w-8 text-neon-purple animate-pulse" />
-                  </div>
-                  <CardTitle className="text-xl neon-text-purple">Rank Predictor</CardTitle>
-                  <CardDescription className="text-muted-foreground">
-                    AI-powered predictions for college admissions based on your rank and preferences
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Smart rank analysis</li>
-                    <li>• Probability scores</li>
-                    <li>• Category-wise predictions</li>
-                    <li>• Visual insights</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </Link>
-
-            {/* Trends & Analysis Card */}
-            <Link to="/trends" className="group">
-              <Card className="glass-card border-neon-pink/20 hover:shadow-[0_0_30px_hsl(330_100%_70%/0.5)] hover:border-neon-pink/40 transition-all duration-300 group-hover:scale-105 h-full">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-4 rounded-full bg-neon-pink/10 border border-neon-pink/30">
-                    <TrendingUp className="h-8 w-8 text-neon-pink animate-pulse" />
-                  </div>
-                  <CardTitle className="text-xl text-neon-pink">Trends & Analysis</CardTitle>
-                  <CardDescription className="text-muted-foreground">
-                    Interactive charts and comprehensive analysis of college admission trends
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Historical cutoff trends</li>
-                    <li>• Interactive visualizations</li>
-                    <li>• Course popularity metrics</li>
-                    <li>• Export capabilities</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </Link>
-
-            {/* About Card */}
-            <Link to="/about" className="group">
-              <Card className="glass-card border-neon-green/20 hover:shadow-[0_0_30px_hsl(120_100%_50%/0.5)] hover:border-neon-green/40 transition-all duration-300 group-hover:scale-105 h-full">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-4 rounded-full bg-neon-green/10 border border-neon-green/30">
-                    <Info className="h-8 w-8 text-neon-green animate-pulse" />
-                  </div>
-                  <CardTitle className="text-xl text-neon-green">About & Support</CardTitle>
-                  <CardDescription className="text-muted-foreground">
-                    Learn more about our platform, methodology, and get help when you need it
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Platform overview</li>
-                    <li>• Data methodology</li>
-                    <li>• User guides & tutorials</li>
-                    <li>• Contact support</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-background via-card to-background">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="animate-float">
-              <div className="text-4xl md:text-5xl font-bold neon-text mb-2">150+</div>
-              <div className="text-muted-foreground">Colleges in Database</div>
-            </div>
-            <div className="animate-float" style={{animationDelay: '1s'}}>
-              <div className="text-4xl md:text-5xl font-bold neon-text-purple mb-2">95%</div>
-              <div className="text-muted-foreground">Prediction Accuracy</div>
-            </div>
-            <div className="animate-float" style={{animationDelay: '2s'}}>
-              <div className="text-4xl md:text-5xl font-bold text-neon-pink mb-2">8 Years</div>
-              <div className="text-muted-foreground">Historical Data</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-4 border-t border-border/50">
-        <div className="container mx-auto text-center text-muted-foreground">
-          <p>&copy; 2024 RankAdvisor. Empowering students with data-driven college decisions.</p>
+      <footer className="px-4 py-8 sm:px-8">
+        <div className="container mx-auto flex max-w-7xl flex-col justify-between gap-4 text-xs uppercase tracking-[0.16em] text-muted-foreground sm:flex-row">
+          <span>RankAdvisor / JEE decision intelligence</span>
+          <Link to="/about" className="transition-colors hover:text-neon-purple">Methodology & support</Link>
         </div>
       </footer>
     </div>
